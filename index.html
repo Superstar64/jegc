@@ -1,0 +1,49 @@
+<html>
+<head>
+<style>
+h1{
+	text-align: center
+}
+.center{
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+.border{
+	border-style: solid;
+	border-width: 1px;
+}
+#graph{
+	width: 50vmin;
+	height:50vmin;
+}
+.indent{
+	margin-left: 50px
+}
+</style>
+<title>Javascipt eval Graphing Calculator</title>
+<script src="grapher.js"></script>
+</head>
+<body>
+	<h1>Javascipt <span style="color:red">eval</span> Graphing Calculator</h1>
+	<canvas id="graph" class="center border" draggable="false"></canvas>
+	<div style="width:50vmin" class="center">
+		<span id="cordx"></span>,<span id="cordy"></span>
+	</div>
+	<button type="button" class="center" onClick="render()">render</button>
+	<div id="functions">
+	</div>
+	<div class="center" id="error">
+	</div>
+	<script>
+		init();
+		addEmpty();
+		canvas.onmousemove=onMove;
+		canvas.onwheel=onScroll;
+		setCanvasSize();
+		render();
+	</script>
+</body>
+</html>
