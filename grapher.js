@@ -40,7 +40,7 @@ var render=function(){
 	for(var i=0;i<functions.length;i++){
 		var str="function(x) {"+(functions[i].innerText || functions[i].textContent)+"}";
 		try{
-			funcs[i]=eval(str);
+			funcs[i]=eval("("+str+")");
 		}catch(e){
 			if(!(e instanceof SyntaxError)){
 				throw e;
