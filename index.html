@@ -30,7 +30,9 @@ h1{
 	<h1>Javascipt <span style="color:red">eval</span> Graphing Calculator</h1>
 	<canvas id="graph" class="center border" draggable="false"></canvas>
 	<div style="width:50vmin" class="center">
-		<span id="cordx"></span>,<span id="cordy"></span>
+		<input id="cordx" type="number" onchange="curx=(+this.value);renderFunctions();"></input>,<input id="cordy" type="number" onchange="cury=(+this.value);renderFunctions();"></input>
+		<br/>
+		<input class="center" id="scale" type="number" onchange="scale=(+this.value);renderFunctions();"></input>
 	</div>
 	<button type="button" class="center" onClick="render()">render</button>
 	<div id="functions">
@@ -39,11 +41,6 @@ h1{
 	</div>
 	<script>
 		init();
-		addEmpty();
-		canvas.onmousemove=onMove;
-		canvas.onwheel=onScroll;
-		setCanvasSize();
-		render();
 	</script>
 </body>
 </html>

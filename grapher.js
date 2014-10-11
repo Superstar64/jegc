@@ -21,8 +21,9 @@ var graph=function(func,xsize,ysize){
 }
 var funcs=[];
 var renderFunctions=function(){
-	cordx.innerHTML=curx+"";
-	cordy.innerHTML=cury+"";
+	cordx.value=curx+"";
+	cordy.value=cury+"";
+	scaleelm.value=scale+"";
 	canvas.width=canvas.width;
 	for(var i=0;i<funcs.length;i++){
 		graph(funcs[i],canvas.width,canvas.height);
@@ -124,11 +125,19 @@ var canvas;
 var context;
 var cordx;
 var cordy;
+var scaleelm;
 var init=function(){
 	canvas=document.getElementById("graph");
 	context=canvas.getContext("2d");
 	cordx=document.getElementById("cordx");
 	cordy=document.getElementById("cordy");
+	scaleelm=document.getElementById("scale");
+	
+	addEmpty();
+	canvas.onmousemove=onMove;
+	canvas.onwheel=onScroll;
+	setCanvasSize();
+	render();
 }
 
 var setCanvasSize=function(){
