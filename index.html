@@ -15,9 +15,11 @@ h1{
 	border-style: solid;
 	border-width: 1px;
 }
-#graph{
-	width: 50vmin;
-	height:50vmin;
+.cwidth{
+	width: 498px;
+}
+.cheight{
+	height:498px;
 }
 .indent{
 	margin-left: 50px
@@ -28,9 +30,14 @@ h1{
 </head>
 <body>
 	<h1>Javascipt <span style="color:red">eval</span> Graphing Calculator</h1>
-	<canvas id="graph" class="center border" draggable="false"></canvas>
-	<div style="width:50vmin" class="center">
-		<input id="cordx" type="number" onchange="curx=(+this.value);renderFunctions();"></input>,<input id="cordy" type="number" onchange="cury=(+this.value);renderFunctions();"></input>
+	<div class="center cwidth">
+		<input id="sizex" type="number" onchange="setsizex(+this.value-2)"></input>
+		<input id="sizey" type="number" onchange="setsizey(+this.value-2)"></input>
+	</div>
+	<canvas id="graph" class="center border cwidth cheight" draggable="false"></canvas>
+	<div class="center cwidth">
+		<input id="cordx" type="number" onchange="curx=(+this.value);renderFunctions();"></input>
+		,<input id="cordy" type="number" onchange="cury=(+this.value);renderFunctions();"></input>
 		<br/>
 		<input class="center" id="scale" type="number" onchange="scale=(+this.value);renderFunctions();"></input>
 	</div>

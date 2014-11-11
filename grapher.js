@@ -126,6 +126,8 @@ var context;
 var cordx;
 var cordy;
 var scaleelm;
+var sizex;
+var sizey;
 var init=function(){
 	canvas=document.getElementById("graph");
 	context=canvas.getContext("2d");
@@ -138,6 +140,24 @@ var init=function(){
 	canvas.onwheel=onScroll;
 	setCanvasSize();
 	render();
+	sizex=document.getElementById("sizex");
+	sizey=document.getElementById("sizey");
+	sizex.value=canvas.width;
+	sizey.value=canvas.height;
+}
+
+var setsizex=function(size){
+	var elm=document.getElementsByClassName("cwidth");
+	for(var i=0;i<elm.length;i++){
+		elm[i].style.width=size;
+	}
+}
+
+var setsizey=function(size){
+	var elm=document.getElementsByClassName("cheight");
+	for(var i=0;i<elm.length;i++){
+		elm[i].style.height=size;
+	}
 }
 
 var setCanvasSize=function(){
