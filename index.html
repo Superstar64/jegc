@@ -31,15 +31,15 @@ h1{
 <body>
 	<h1>Javascipt <span style="color:red">eval</span> Graphing Calculator</h1>
 	<div class="center cwidth">
-		<input id="sizex" type="number" onchange="setsizex(+this.value-2)"></input>
-		<input id="sizey" type="number" onchange="setsizey(+this.value-2)"></input>
+		<input style="float:left;width:50%" title="Graph Width" id="sizex" type="number" onchange="setsizex(+this.value)"></input>
+		<input style="float:right;width:50%" title="Graph Height"id="sizey" type="number" onchange="setsizey(+this.value)"></input>
 	</div>
 	<canvas id="graph" class="center border cwidth cheight" draggable="false"></canvas>
 	<div class="center cwidth">
-		<input id="cordx" type="number" onchange="curx=(+this.value);renderFunctions();"></input>
-		,<input id="cordy" type="number" onchange="cury=(+this.value);renderFunctions();"></input>
+		<input style="float:left;width:50%" title="Graph X" id="cordx" type="number" onchange="curx=(+this.value);renderFunctions();"></input>
+		<input style="float:right;width:50%"title="Graph Y" id="cordy" type="number" onchange="cury=(+this.value);renderFunctions();"></input>
 		<br/>
-		<input class="center" id="scale" type="number" onchange="scale=(+this.value);renderFunctions();"></input>
+		<input title="Graph Scale" class="center" id="scale" type="number" onchange="scale=(+this.value);renderFunctions();"></input>
 	</div>
 	<button type="button" class="center" onClick="render()">render</button>
 	<div id="functions">

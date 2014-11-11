@@ -128,6 +128,7 @@ var cordy;
 var scaleelm;
 var sizex;
 var sizey;
+var borderwidth=2;
 var init=function(){
 	canvas=document.getElementById("graph");
 	context=canvas.getContext("2d");
@@ -149,15 +150,21 @@ var init=function(){
 var setsizex=function(size){
 	var elm=document.getElementsByClassName("cwidth");
 	for(var i=0;i<elm.length;i++){
-		elm[i].style.width=size;
+		elm[i].style.width=size-borderwidth*2;
 	}
+	canvas.width=size;
+	context=canvas.getContext("2d");
+	renderFunctions();
 }
 
 var setsizey=function(size){
 	var elm=document.getElementsByClassName("cheight");
 	for(var i=0;i<elm.length;i++){
-		elm[i].style.height=size;
+		elm[i].style.height=size-borderwidth*2;
 	}
+	canvas.height=size;
+	context=canvas.getContext("2d");
+	renderFunctions();
 }
 
 var setCanvasSize=function(){
