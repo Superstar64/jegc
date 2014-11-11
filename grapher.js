@@ -56,10 +56,14 @@ var render=function(){
 var mouseDown=false;
 
 document.onmouseup = function(event) {
-	mouseDown=false;
+	if(event.button==0){
+		mouseDown=false;
+	}
 }
 document.onmousedown = function(event) {
-	mouseDown=true;
+	if(event.button==0){
+		mouseDown=true;
+	}
 }
 
 var oldx=0;
