@@ -34,8 +34,6 @@ var render=function(){
 	var erron=document.getElementById("error");
 	erron.innerHTML="";
 	scale=1;
-	curx=-canvas.width/2/scale;
-	cury=-canvas.height/2/scale;
 	funcs=[];
 	var functions=document.getElementsByClassName("function");
 	for(var i=0;i<functions.length;i++){
@@ -144,6 +142,8 @@ var init=function(){
 	canvas.onmousemove=onMove;
 	canvas.onwheel=onScroll;
 	setCanvasSize();
+	curx=-canvas.width/2/scale;
+	cury=-canvas.height/2/scale;
 	render();
 	sizex=document.getElementById("sizex");
 	sizey=document.getElementById("sizey");
