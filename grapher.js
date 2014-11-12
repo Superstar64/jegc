@@ -9,7 +9,7 @@ var drawPixel=function(x,y){
 
 var curx;
 var cury;
-var scale;
+var scale=1;
 var graph=function(func,xsize,ysize){
 	for(var i=0;i<xsize;i++){
 		var ay=func(i/scale+curx);
@@ -33,7 +33,6 @@ var renderFunctions=function(){
 var render=function(){
 	var erron=document.getElementById("error");
 	erron.innerHTML="";
-	scale=1;
 	funcs=[];
 	var functions=document.getElementsByClassName("function");
 	for(var i=0;i<functions.length;i++){
