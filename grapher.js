@@ -24,7 +24,7 @@ var renderFunctions=function(){
 	context.fillStyle="black";
 	cordx.value=curx+"";
 	cordy.value=cury+"";
-	scaleelm.value=scale+"";
+	scaleelm.value=(Math.log(scale)/Math.log(2))+"";
 	canvas.width=canvas.width;
 	for(var i=0;i<funcs.length;i++){
 		graph(funcs[i],canvas.width,canvas.height);
@@ -189,4 +189,9 @@ var setCanvasSize=function(){
 	canvas.height=canvas.offsetHeight;
 	context=canvas.getContext("2d");
 	render();
+}
+
+var setScale=function(size){
+	scale=Math.pow(2,size);
+	renderFunctions();
 }
