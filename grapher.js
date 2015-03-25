@@ -47,7 +47,7 @@ var renderFunctions=function(){
 	
 	context.fillStyle="gray";
 	
-	var guide=1/scale*50;
+	var guide=1/scale*32;
 	
 	for(var guidex=curx-curx%guide;guidex<curx+canvas.width/scale;guidex+=guide){
 		if(guidex!=0){
