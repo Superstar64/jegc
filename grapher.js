@@ -31,15 +31,11 @@ var renderFunctions=function(){
 	
 	var originx=(0-curx)*scale;
 	if(originx>0 && originx<canvas.width){
-		for(var i=0;i<canvas.height;i++){
-			drawPixel(originx,i);
-		}
+		context.fillRect(originx,0,1,canvas.height);
 	}
 	var originy=canvas.height-(0-cury)*scale;
 	if(originy>0 && originy<canvas.height){
-		for(var i=0;i<canvas.width;i++){
-			drawPixel(i,originy);
-		}
+		context.fillRect(0,originy,canvas.width,1);
 	}
 	
 	context.fillStyle="gray";
@@ -48,17 +44,13 @@ var renderFunctions=function(){
 	
 	for(var guidex=curx-curx%guide;guidex<curx+canvas.width/scale;guidex+=guide){
 		if(guidex!=0){
-			for(var y=0;y<canvas.height;y++){
-				drawPixel((guidex-curx)*scale,y);
-			}
+			context.fillRect((guidex-curx)*scale,0,1,canvas.height);
 			context.fillText(guidex+"",(guidex-curx)*scale,canvas.height);
 		}
 	}
 	for(var guidey=cury-cury%guide;guidey<cury+canvas.height/scale;guidey+=guide){
 		if(guidey!=0){
-			for(var x=0;x<canvas.width;x++){
-				drawPixel(x,canvas.width-(guidey-cury)*scale);
-			}
+			context.fillRect(0,canvas.height-(guidey-cury)*scale,canvas.width,1);
 			context.fillText(guidey+"",0,canvas.height-(guidey-cury)*scale);
 		}
 	}
