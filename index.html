@@ -39,8 +39,8 @@ h1{
 <body>
 	<h1>Javascipt <span style="color:red">eval</span> Graphing Calculator</h1>
 	<div class="center cwidth">
-		<span class="fleft">Graph Width(in pixels)</span>
-		<span class="fright">Graph Height(in pixels)</span>
+		<span class="fleft">Graph Width</span>
+		<span class="fright">Graph Height</span>
 	</div>
 	<div class="center cwidth">
 		<input class="fleft" title="Graph Width" id="sizex" type="number" onchange="setsizex(+this.value)"></input>
@@ -60,6 +60,9 @@ h1{
 	</div>
 	<div class="center cwidth">
 		<input title="Graph Scale"  style="width:50%" class="center" id="scale" type="number" onchange="setScale(+this.value);"></input>
+	</div>
+	<div class="center cwidth">
+		<div id="guide" class="center" style="width:50%"></div>
 	</div>
 	<button type="button" class="center" onClick="render()">render</button>
 	<div id="functions">

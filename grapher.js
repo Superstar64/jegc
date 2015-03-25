@@ -10,16 +10,17 @@ var drawPixel=function(x,y){
 var curx;
 var cury;
 var scale=1;
-var graph=function(func,xsize,ysize){
-	for(var i=0;i<xsize;i++){
+var graph=function(func){
+	for(var i=0;i<canvas.width;i++){
 		var ay=func(i/scale+curx);
-		var y=ysize-(ay-cury)*scale;
-		if(y>0 && y<ysize){
+		var y=canvas.height-(ay-cury)*scale;
+		if(y>0 && y<canvas.height){
 			drawPixel(i,y);
 		}
 	}
 }
 var funcs=[];
+
 var renderFunctions=function(){
 	context.fillStyle="black";
 	cordx.value=curx+"";
@@ -27,21 +28,44 @@ var renderFunctions=function(){
 	scaleelm.value=(Math.log(scale)/Math.log(2))+"";
 	canvas.width=canvas.width;
 	for(var i=0;i<funcs.length;i++){
-		graph(funcs[i],canvas.width,canvas.height);
+		graph(funcs[i]);
 	}
 	context.fillStyle="blue";
-	var orginx=(0-curx)*scale;
-	if(orginx>0 && orginx<canvas.width){
+	
+	var originx=(0-curx)*scale;
+	if(originx>0 && originx<canvas.width){
 		for(var i=0;i<canvas.height;i++){
-			drawPixel(orginx,i);
+			drawPixel(originx,i);
 		}
 	}
-	var orginy=canvas.height-(0-cury)*scale;
-	if(orginy>0 && orginy<canvas.height){
+	var originy=canvas.height-(0-cury)*scale;
+	if(originy>0 && originy<canvas.height){
 		for(var i=0;i<canvas.width;i++){
-			drawPixel(i,orginy);
+			drawPixel(i,originy);
 		}
 	}
+	
+	context.fillStyle="gray";
+	
+	var guide=1/scale*50;
+	
+	for(var guidex=curx-curx%guide;guidex<curx+canvas.width/scale;guidex+=guide){
+		if(guidex!=0){
+			for(var y=0;y<canvas.height;y++){
+				drawPixel((guidex-curx)*scale,y);
+			}
+			context.fillText(guidex+"",(guidex-curx)*scale,canvas.height);
+		}
+	}
+	for(var guidey=cury-cury%guide;guidey<cury+canvas.height/scale;guidey+=guide){
+		if(guidey!=0){
+			for(var x=0;x<canvas.width;x++){
+				drawPixel(x,canvas.width-(guidey-cury)*scale);
+			}
+			context.fillText(guidey+"",0,canvas.height-(guidey-cury)*scale);
+		}
+	}
+	guideelm.innerHTML="Guide Lines Every "+guide+" Units";
 }
 
 var render=function(){
@@ -144,13 +168,14 @@ var scaleelm;
 var sizex;
 var sizey;
 var borderwidth=2;
+var guideelm;
 var init=function(){
 	canvas=document.getElementById("graph");
 	context=canvas.getContext("2d");
 	cordx=document.getElementById("cordx");
 	cordy=document.getElementById("cordy");
 	scaleelm=document.getElementById("scale");
-	
+	guideelm=document.getElementById("guide");
 	addEmpty();
 	canvas.onmousemove=onMove;
 	canvas.onwheel=onScroll;
@@ -162,6 +187,7 @@ var init=function(){
 	sizey=document.getElementById("sizey");
 	sizex.value=canvas.width;
 	sizey.value=canvas.height;
+	
 }
 
 var setsizex=function(size){
