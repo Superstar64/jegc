@@ -22,14 +22,11 @@ var graph=function(func){
 var funcs=[];
 
 var renderFunctions=function(){
-	context.fillStyle="black";
 	cordx.value=curx+"";
 	cordy.value=cury+"";
 	scaleelm.value=(Math.log(scale)/Math.log(2))+"";
 	canvas.width=canvas.width;
-	for(var i=0;i<funcs.length;i++){
-		graph(funcs[i]);
-	}
+	
 	context.fillStyle="blue";
 	
 	var originx=(0-curx)*scale;
@@ -66,6 +63,11 @@ var renderFunctions=function(){
 		}
 	}
 	guideelm.innerHTML="Guide Lines Every "+guide+" Units";
+	
+	context.fillStyle="black";
+	for(var i=0;i<funcs.length;i++){
+		graph(funcs[i]);
+	}
 }
 
 var render=function(){
