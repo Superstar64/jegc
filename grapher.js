@@ -21,12 +21,26 @@ var graph=function(func,xsize,ysize){
 }
 var funcs=[];
 var renderFunctions=function(){
+	context.fillStyle="black";
 	cordx.value=curx+"";
 	cordy.value=cury+"";
 	scaleelm.value=scale+"";
 	canvas.width=canvas.width;
 	for(var i=0;i<funcs.length;i++){
 		graph(funcs[i],canvas.width,canvas.height);
+	}
+	context.fillStyle="blue";
+	var orginx=(0-curx)*scale;
+	if(orginx>0 && orginx<canvas.width){
+		for(var i=0;i<canvas.height;i++){
+			drawPixel(orginx,i);
+		}
+	}
+	var orginy=canvas.height-(0-cury)*scale;
+	if(orginy>0 && orginy<canvas.height){
+		for(var i=0;i<canvas.width;i++){
+			drawPixel(i,orginy);
+		}
 	}
 }
 
