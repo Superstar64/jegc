@@ -64,7 +64,12 @@ h1{
 	<div class="center cwidth">
 		<div id="guide" class="center" style="width:50%"></div>
 	</div>
-	<button type="button" class="center" onClick="render()">render</button>
+	<div align="center">
+		<button "type="button" onClick="render();renderFunctions();">render</button>
+	</div>
+	<div align="center">
+		Interpolate <input title="interpolate" type="checkbox" onchange="polate = this.checked;renderFunctions();"></input>
+	</div>
 	<div id="functions">
 	</div>
 	<div class="center" id="error">

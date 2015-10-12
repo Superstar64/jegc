@@ -10,12 +10,20 @@ var drawPixel=function(x,y){
 var curx;
 var cury;
 var scale=1;
+var polate;
 var graph=function(func){
 	for(var i=0;i<canvas.width;i++){
 		var ay=func(i/scale+curx);
 		var y=canvas.height-(ay-cury)*scale;
 		if(y>0 && y<canvas.height){
 			drawPixel(i,y);
+		}
+		if(polate){
+			var ay2 = func((i+1)/scale+curx);
+			var y2=canvas.height-(ay2-cury)*scale;
+			var miny = Math.max(0,y);
+			var maxy = Math.min(canvas.height,y2);
+			context.fillRect(i,Math.min(miny,maxy),1,Math.abs(maxy - miny));
 		}
 	}
 }
